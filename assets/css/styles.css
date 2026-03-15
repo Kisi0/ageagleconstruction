@@ -6,8 +6,8 @@
   --header-height: 3.5rem;
 
   /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
-  --first-color: hsl(18, 95%, 55%);
+  /* Color mode HSL(hue, saturation, lightness)*/
+  /* --first-color: hsl(18, 94%, 49%);
   --second-color: hsl(42, 98%, 52%);
   --first-gradient: linear-gradient(90deg,
                   hsl(18, 95%, 55%),
@@ -20,7 +20,24 @@
   --white-color: hsl(0, 0%, 100%);
   --black-color: hsl(255, 20%, 10%);
   --gray-border: hsl(255, 6%, 90%);
-  --black-border: hsl(255, 10%, 20%);
+  --black-border: hsl(255, 10%, 20%);  */
+  /*========== Colors ==========*/
+/*Color mode HSL(hue, saturation, lightness)*/
+--first-color: hsl(2, 80%, 50%);
+--second-color: hsl(27, 98%, 50%);
+--first-gradient: linear-gradient(90deg,
+                hsl(0, 95%, 55%),
+                hsl(5, 98%, 64%));
+
+--title-color: hsl(255, 12%, 12%);
+--text-color: hsl(225, 12%, 24%);
+--text-color-light: hsl(255, 4%, 70%);
+--body-color: hsl(0, 0%, 100%);
+--container-color: hsl(0, 0%, 100%);
+--white-color: hsl(0, 0%, 100%);
+--black-color: hsl(255, 20%, 10%);
+--gray-border: hsl(255, 6%, 90%);
+--black-border: hsl(255, 10%, 20%);
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -300,8 +317,9 @@ img {
 }
 
 .home__img-1 {
-  width: 200px;
+  width: 500px;
   margin: auto;
+  margin-top: 100px;
 }
 
 
@@ -605,6 +623,142 @@ img {
   transform: translateY(-.25rem);
 }
 
+/*=============== CONTACT FORM ===============*/
+/*=============== CONTACT FORM ===============*/
+.contact__form-container {
+  max-width: 600px;
+  margin: 3rem auto 0;
+  background: var(--white-color);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.contact__form-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--title-color);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.contact__form-subtitle {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact__label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--title-color);
+  margin-left: 0.25rem;
+}
+
+.contact__input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.contact__input:focus {
+  border-color: var(--first-color);
+  background: var(--white-color);
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+.contact__input::placeholder {
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+.contact__textarea {
+  height: 140px;
+  resize: vertical;
+  min-height: 120px;
+  max-height: 240px;
+  font-family: inherit;
+}
+
+.contact__submit-btn {
+  background: var(--first-gradient);
+  color: var(--white-color);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.contact__submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+}
+
+.contact__submit-btn i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.contact__submit-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .contact__form-container {
+    padding: 1.5rem;
+    margin: 2rem 1rem;
+  }
+  
+  .contact__form-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact__form-container {
+    padding: 1.25rem;
+  }
+  
+  .contact__submit-btn {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+  
+  .contact__input {
+    padding: 0.875rem 1rem;
+  }
+}
+
 /*=============== FOOTER ===============*/
 .footer {
   background-color: var(--black-color);
@@ -622,6 +776,11 @@ img {
   display: inline-flex;
   align-items: center;
   column-gap: .25rem;
+}
+
+.nav__logo-img1 {
+   width: 100px;
+   margin-right: 10px;
 }
 
 .footer__logo span {
