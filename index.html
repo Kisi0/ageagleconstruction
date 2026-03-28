@@ -404,15 +404,47 @@
       <!-- CONTACT FORM -->
       <div class="contact__form-container">
 
-         <form action="https://formsubmit.co/ageagleconstructionllc@gmail.com" method="POST" class="contact__form">
+         <form action="https://formsubmit.co/ageagleconstructionllc@gmail.com" method="POST" class="contact-modal__form">
 
             <input type="text" name="name" placeholder="Your Name" required class="contact__input">
 
             <input type="email" name="email" placeholder="Your Email" required class="contact__input">
 
-            <textarea name="message" placeholder="Your Message" required class="contact__input contact__textarea"></textarea>
-            
-            <button type="submit" class="contact__submit-btn">   
+            <input type="tel" name="phone" placeholder="Your Phone (optional)" class="contact__input">
+
+            <div class="contact-modal__services">
+               <p class="contact-modal__services-label">Service Needed <span>(optional)</span></p>
+               <div class="contact-modal__checkboxes">
+                  <label class="contact-modal__check">
+                     <input type="checkbox" name="service" value="Roofing">
+                     <span>Roofing</span>
+                  </label>
+                  <label class="contact-modal__check">
+                     <input type="checkbox" name="service" value="Chimney">
+                     <span>Chimney</span>
+                  </label>
+                  <label class="contact-modal__check">
+                     <input type="checkbox" name="service" value="Gutters">
+                     <span>Gutters</span>
+                  </label>
+                  <label class="contact-modal__check">
+                     <input type="checkbox" name="service" value="Siding">
+                     <span>Siding</span>
+                  </label>
+                  <label class="contact-modal__check">
+                     <input type="checkbox" name="service" value="Concrete">
+                     <span>Concrete</span>
+                  </label>
+                  <label class="contact-modal__check">
+                     <input type="checkbox" name="service" value="Other">
+                     <span>Other</span>
+                  </label>
+               </div>
+            </div>
+
+            <textarea name="message" placeholder="Your Message" class="contact__input contact__textarea"></textarea>
+
+            <button type="submit" class="contact__submit-btn">
               <span>Send Message</span>
              <i class="ri-send-plane-line"></i>
             </button>

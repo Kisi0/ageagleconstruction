@@ -53,52 +53,50 @@ const bgHeader = () =>{
 window.addEventListener('scroll', bgHeader)
 bgHeader()
 
-/*=============== SWIPER SERVICES ===============*/ 
-const swiperServices = new Swiper('.services__swiper', {
-   loop: true,
-   grabCursor: true,
-   spaceBetween: 24,
-   slidesPerView: 'auto',
+/*=============== SWIPER SERVICES ===============*/
+if(typeof Swiper !== 'undefined' && document.querySelector('.services__swiper')){
+   new Swiper('.services__swiper', {
+      loop: true,
+      grabCursor: true,
+      spaceBetween: 24,
+      slidesPerView: 'auto',
 
-   navigation: {
-     nextEl: '.swiper-button-next',
-     prevEl: '.swiper-button-prev',
-   },
-})
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+   })
+}
 
 /*=============== CONTACT FLOAT BUTTON ===============*/
 const contactFloatBtn = document.getElementById('contact-float-btn')
 const contactModal = document.getElementById('contact-modal')
 const contactModalClose = document.getElementById('contact-modal-close')
 
-// Show float button same time as scroll-up
-const showContactFloat = () => {
-   this.scrollY >= 350
-      ? contactFloatBtn.classList.add('show-contact')
-      : contactFloatBtn.classList.remove('show-contact')
-}
-window.addEventListener('scroll', showContactFloat)
-showContactFloat()
+if(contactFloatBtn && contactModal && contactModalClose){
+   // Always show float button
+   contactFloatBtn.classList.add('show-contact')
 
-// Open modal
-contactFloatBtn.addEventListener('click', () => {
-   contactModal.classList.add('active')
-   document.body.style.overflow = 'hidden'
-})
+   // Open modal
+   contactFloatBtn.addEventListener('click', () => {
+      contactModal.classList.add('active')
+      document.body.style.overflow = 'hidden'
+   })
 
-// Close modal with X button
-contactModalClose.addEventListener('click', () => {
-   contactModal.classList.remove('active')
-   document.body.style.overflow = ''
-})
-
-// Close modal clicking outside content
-contactModal.addEventListener('click', (e) => {
-   if(e.target === contactModal){
+   // Close modal with X button
+   contactModalClose.addEventListener('click', () => {
       contactModal.classList.remove('active')
       document.body.style.overflow = ''
-   }
-})
+   })
+
+   // Close modal clicking outside content
+   contactModal.addEventListener('click', (e) => {
+      if(e.target === contactModal){
+         contactModal.classList.remove('active')
+         document.body.style.overflow = ''
+      }
+   })
+}
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll('section[id]')
@@ -125,8 +123,8 @@ window.addEventListener('scroll', scrollActive)
 const sr = ScrollReveal({
    origin: 'top',
    distance: '100px',
-   duration: 2500,
-   delay: 400,
+   duration: 1500,
+   delay: 300,
 })
 
 sr.reveal(`.home__content, .services__data, .services__swiper, .footer__container`)
