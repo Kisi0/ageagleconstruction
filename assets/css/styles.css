@@ -1334,6 +1334,53 @@ img {
   }
 }
 
+/* For small phones - contact modal & service pages */
+@media screen and (max-width: 480px) {
+  .contact-float span {
+    display: none;
+  }
+
+  .contact-float {
+    padding: .7rem;
+  }
+
+  .contact-modal__content {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .contact-modal__checkboxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-hero {
+    padding-block: 5rem 2.5rem;
+  }
+
+  .service-hero__title {
+    font-size: var(--h1-font-size);
+  }
+
+  .service-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .service-reviews__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-card {
+    padding: 1.1rem;
+  }
+
+  .service-desc {
+    padding-block: 2.5rem;
+  }
+
+  .service-reviews {
+    padding-block: 2.5rem;
+  }
+}
+
 /* For large devices */
 @media screen and (min-width: 1150px) {
   .container {
