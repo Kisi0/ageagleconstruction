@@ -1,3 +1,20 @@
+/*=============== NAV DROPDOWN ===============*/
+const navDropdown = document.querySelector('.nav__dropdown')
+const navDropdownToggle = document.querySelector('.nav__dropdown-toggle')
+
+if(navDropdownToggle){
+   navDropdownToggle.addEventListener('click', (e) => {
+      e.preventDefault()
+      navDropdown.classList.toggle('open')
+   })
+
+   document.addEventListener('click', (e) => {
+      if(!navDropdown.contains(e.target)){
+         navDropdown.classList.remove('open')
+      }
+   })
+}
+
 /*=============== SHOW MENU ===============*/
 const navMenu = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),
@@ -18,11 +35,10 @@ if(navClose){
 }
 
 /*=============== REMOVE MENU MOBILE ===============*/
-const navLink = document.querySelectorAll('.nav__link')
+const navLink = document.querySelectorAll('.nav__link:not(.nav__dropdown-toggle)')
 
 const linkAction = () =>{
    const navMenu = document.getElementById('nav-menu')
-   // When we click on each nav__link, we remove the show-menu class
    navMenu.classList.remove('show-menu')
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
@@ -50,15 +66,39 @@ const swiperServices = new Swiper('.services__swiper', {
    },
 })
 
-/*=============== SHOW SCROLL UP ===============*/ 
-const scrollUp = () =>{
-	const scrollUp = document.getElementById('scroll-up')
-   // When the scroll is higher than 350 viewport height, add the show-scroll class to the a tag with the scrollup class
-	this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
-						: scrollUp.classList.remove('show-scroll')
+/*=============== CONTACT FLOAT BUTTON ===============*/
+const contactFloatBtn = document.getElementById('contact-float-btn')
+const contactModal = document.getElementById('contact-modal')
+const contactModalClose = document.getElementById('contact-modal-close')
+
+// Show float button same time as scroll-up
+const showContactFloat = () => {
+   this.scrollY >= 350
+      ? contactFloatBtn.classList.add('show-contact')
+      : contactFloatBtn.classList.remove('show-contact')
 }
-window.addEventListener('scroll', scrollUp)
-scrollUp()
+window.addEventListener('scroll', showContactFloat)
+showContactFloat()
+
+// Open modal
+contactFloatBtn.addEventListener('click', () => {
+   contactModal.classList.add('active')
+   document.body.style.overflow = 'hidden'
+})
+
+// Close modal with X button
+contactModalClose.addEventListener('click', () => {
+   contactModal.classList.remove('active')
+   document.body.style.overflow = ''
+})
+
+// Close modal clicking outside content
+contactModal.addEventListener('click', (e) => {
+   if(e.target === contactModal){
+      contactModal.classList.remove('active')
+      document.body.style.overflow = ''
+   }
+})
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll('section[id]')
@@ -87,7 +127,6 @@ const sr = ScrollReveal({
    distance: '100px',
    duration: 2500,
    delay: 400,
-   // reset: true, // Animations repeat
 })
 
 sr.reveal(`.home__content, .services__data, .services__swiper, .footer__container`)

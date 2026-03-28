@@ -38,8 +38,17 @@
                      <a href="#about" class="nav__link">About Us</a>
                   </li>
 
-                  <li>
-                     <a href="#services" class="nav__link">Services</a>
+                  <li class="nav__dropdown">
+                     <a href="#services" class="nav__link nav__dropdown-toggle">
+                        Services <i class="ri-arrow-down-s-line nav__dropdown-arrow"></i>
+                     </a>
+                     <ul class="nav__dropdown-menu">
+                        <li><a href="roofing.html" class="nav__dropdown-link"><i class="ri-home-4-line"></i> Roofing</a></li>
+                        <li><a href="chimney.html" class="nav__dropdown-link"><i class="ri-fire-line"></i> Chimney</a></li>
+                        <li><a href="gutters.html" class="nav__dropdown-link"><i class="ri-drop-line"></i> Gutters</a></li>
+                        <li><a href="siding.html" class="nav__dropdown-link"><i class="ri-building-3-line"></i> Siding</a></li>
+                        <li><a href="concrete.html" class="nav__dropdown-link"><i class="ri-hammer-line"></i> Concrete</a></li>
+                     </ul>
                   </li>
 
                   <li>
@@ -68,8 +77,10 @@
       <main class="main">
          <!--==================== HOME ====================-->
          <section class="home section" id="home">
-            <!-- <img src="assets/img/home-lines-bg.svg" alt="image" class="home__lines"> -->
-            
+            <div class="home__images">
+               <img src="assets/img/A-G_eagleconstruction.png" alt="image" class="home__img-1">
+            </div>
+
             <div class="home__container container grid">
                <div class="home__content grid">
                   <div class="home__data">
@@ -83,10 +94,10 @@
                     <strong>A-G Eagle Construction</strong>delivers expert roofing, chimney, gutter, siding, and concrete solutions. With years of experience and a team of skilled professionals, we provide durable, high-quality results designed to protect and enhance your home.
                       <br>
                      From precise installations to reliable repairs, our commitment is to quality, safety, and customer satisfaction on every project. Let us bring your vision to life with craftsmanship you can trust. </p>
-   
+
                      <div class="home__buttons">
                         <a href="#services" class="button">Our Services</a>
-   
+
                         <a href="#projects" class="button__link">
                            <span>View Projects</span>
                            <i class="ri-arrow-right-line"></i>
@@ -105,10 +116,6 @@
                         <p class="home__info-description">Complete <br> Works</p>
                      </div>
                   </div>
-               </div>
-
-               <div class="home__images">
-                  <img src="assets/img/A-G_eagleconstruction.png" alt="image" class="home__img-1">
                </div>
             </div>
          </section>
@@ -154,7 +161,6 @@
                </div>
 
                <div class="about__images">
-                  <!-- <img src="assets/img/about-img-1.png" alt="image" class="about__img-1"> -->
                   <img src="assets/img/about-img-2.jpg" alt="image" class="about__img-2">
                </div>
             </div>
@@ -176,13 +182,12 @@
                      confidence and security in construction.
                   </p>
 
-                  <a href="#contact" class="button">Contact Now</a>
                </div>
 
                <div class="services__swiper swiper">
                   <div class="swiper-wrapper">
 
-                  <article class="services__card swiper-slide">
+                  <a href="roofing.html" class="services__card swiper-slide">
                   <div class="services__icon">
                   <i class="ri-home-4-line"></i>
                   </div>
@@ -194,10 +199,9 @@
                   using high-quality materials that protect your home
                   from weather damage.
                   </p>
-                  </article>
+                  </a>
 
-
-                  <article class="services__card swiper-slide">
+                  <a href="chimney.html" class="services__card swiper-slide">
                   <div class="services__icon">
                   <i class="ri-fire-line"></i>
                   </div>
@@ -209,10 +213,9 @@
                   to ensure proper ventilation and safety
                   for your home.
                   </p>
-                  </article>
+                  </a>
 
-
-                  <article class="services__card swiper-slide">
+                  <a href="gutters.html" class="services__card swiper-slide">
                   <div class="services__icon">
                   <i class="ri-water-flash-line"></i>
                   </div>
@@ -224,10 +227,9 @@
                   to direct rainwater away from your home and
                   prevent water damage.
                   </p>
-                  </article>
+                  </a>
 
-
-                  <article class="services__card swiper-slide">
+                  <a href="siding.html" class="services__card swiper-slide">
                   <div class="services__icon">
                   <i class="ri-building-3-line"></i>
                   </div>
@@ -239,10 +241,9 @@
                   that improves your home's appearance
                   and protects it from weather conditions.
                   </p>
-                  </article>
+                  </a>
 
-
-                  <article class="services__card swiper-slide">
+                  <a href="concrete.html" class="services__card swiper-slide">
                   <div class="services__icon">
                   <i class="ri-hammer-line"></i>
                   </div>
@@ -254,7 +255,7 @@
                   patios, sidewalks and foundations with
                   strong and long-lasting results.
                   </p>
-                  </article>
+                  </a>
 
                   </div>
 
@@ -324,68 +325,6 @@
             </div>
          </section>
 
-         <!-- ==================== CONTACT ====================
-         <section class="contact section" id="contact">
-            <div class="container">
-               <span class="section__subtitle">CONTACT ME</span>
-               <h2 class="section__title">Write To Us & Build</h2>
-
-               <div class="contact__container grid">
-                  <img src="assets/img/contact-img.png" alt="image" class="contact__img">
-
-                  <div class="contact__data grid">
-                     <div class="contact__card">
-                        <div class="contact__icon">
-                           <i class="ri-map-pin-2-line"></i>
-                        </div>
-   
-                        <h3 class="contact__title">I'm here</h3>
-                        <address class="contact__info">
-                           Peru - Lima <br>
-                           Av.Moon #321
-                        </address>
-                     </div>
-   
-                     <div class="contact__card">
-                        <div class="contact__icon">
-                           <i class="ri-phone-line"></i>
-                        </div>
-   
-                        <h3 class="contact__title">Talk to me</h3>
-                        <address class="contact__info">
-                           +00-987-7654-321 <br>
-                           +11-012345
-                        </address>
-                     </div>
-   
-                     <div class="contact__card">
-                        <div class="contact__icon">
-                           <i class="ri-message-3-line"></i>
-                        </div>
-   
-                        <h3 class="contact__title">Chat with me</h3>
-                        
-                        <div class="contact__social">
-                           <a href="https://api.whatsapp.com/send?phone=51123456789&text=Hello, more information!" target="_blank" class="contact__social-link">
-                              <i class="ri-whatsapp-line"></i>
-                           </a>
-   
-                           <a href="https://www.instagram.com/ag_eagle_construction/" target="_blank" class="contact__social-link">
-                              <i class="ri-messenger-line"></i>
-                           </a>
-                           
-                           <a href="https://t.me/telegram" target="_blank" class="contact__social-link">
-                              <i class="ri-telegram-line"></i>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-      </main> -->
-
-
       <!--==================== CONTACT ====================-->
 <section class="contact section" id="contact">
    <div class="container">
@@ -393,8 +332,7 @@
       <h2 class="section__title">Write To Us & Build</h2>
 
       <div class="contact__container grid">
-         <!-- <img src="assets/img/contact-img.png" alt="image" class="contact__img"> -->
-<div class="contact__map">
+         <div class="contact__map">
    <iframe 
       src="https://www.google.com/maps?q=New+Jersey+and+Pennsylvania&output=embed"
       width="100%" 
@@ -551,15 +489,69 @@
             </div>
          </div>
 
-         <span class="footer__copy">
-            <!-- &#169; All Rights Reserved By Kismete Guri  -->
-         </span>
       </footer>
 
-      <!--========== SCROLL UP ==========-->
-      <a href="#" class="scrollup" id="scroll-up">
-         <i class="ri-arrow-up-line"></i>
-      </a>
+      <!--========== CONTACT FLOAT BUTTON ==========-->
+      <button class="contact-float" id="contact-float-btn">
+         <i class="ri-mail-send-line"></i>
+         <span>Contact Us</span>
+      </button>
+
+      <!--========== CONTACT MODAL ==========-->
+      <div class="contact-modal" id="contact-modal">
+         <div class="contact-modal__content">
+            <button class="contact-modal__close" id="contact-modal-close">
+               <i class="ri-close-large-line"></i>
+            </button>
+
+            <h2 class="contact-modal__title">Get a Free Quote</h2>
+            <p class="contact-modal__subtitle">Tell us about your project and we'll get back to you shortly.</p>
+
+            <form action="https://formsubmit.co/ageagleconstructionllc@gmail.com" method="POST" class="contact-modal__form">
+
+               <input type="text" name="name" placeholder="Your Name" required class="contact__input">
+               <input type="email" name="email" placeholder="Your Email" required class="contact__input">
+               <input type="tel" name="phone" placeholder="Your Phone (optional)" class="contact__input">
+
+               <div class="contact-modal__services">
+                  <p class="contact-modal__services-label">Service Needed <span>(optional)</span></p>
+                  <div class="contact-modal__checkboxes">
+                     <label class="contact-modal__check">
+                        <input type="checkbox" name="service" value="Roofing">
+                        <span>Roofing</span>
+                     </label>
+                     <label class="contact-modal__check">
+                        <input type="checkbox" name="service" value="Chimney">
+                        <span>Chimney</span>
+                     </label>
+                     <label class="contact-modal__check">
+                        <input type="checkbox" name="service" value="Gutters">
+                        <span>Gutters</span>
+                     </label>
+                     <label class="contact-modal__check">
+                        <input type="checkbox" name="service" value="Siding">
+                        <span>Siding</span>
+                     </label>
+                     <label class="contact-modal__check">
+                        <input type="checkbox" name="service" value="Concrete">
+                        <span>Concrete</span>
+                     </label>
+                     <label class="contact-modal__check">
+                        <input type="checkbox" name="service" value="Other">
+                        <span>Other</span>
+                     </label>
+                  </div>
+               </div>
+
+               <textarea name="message" placeholder="Your Message" class="contact__input contact__textarea"></textarea>
+
+               <button type="submit" class="contact__submit-btn">
+                  <span>Send Message</span>
+                  <i class="ri-send-plane-line"></i>
+               </button>
+            </form>
+         </div>
+      </div>
 
       <!--=============== SCROLLREVEAL ===============-->
       <script src="assets/js/scrollreveal.min.js"></script>
