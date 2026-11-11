@@ -35,11 +35,12 @@ if(navClose){
 }
 
 /*=============== REMOVE MENU MOBILE ===============*/
-const navLink = document.querySelectorAll('.nav__link:not(.nav__dropdown-toggle)')
+const navLink = document.querySelectorAll('.nav__link:not(.nav__dropdown-toggle), .nav__dropdown-link')
 
 const linkAction = () =>{
    const navMenu = document.getElementById('nav-menu')
    navMenu.classList.remove('show-menu')
+   if(navDropdown) navDropdown.classList.remove('open')
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
@@ -265,17 +266,125 @@ if(compareSlider){
    })
 }
 
-/*=============== SCROLL REVEAL ANIMATION ===============*/
-const sr = ScrollReveal({
-   origin: 'top',
-   distance: '50px',
-   duration: 600,
-   delay: 100,
-})
+/*=============== STATS STRIP ===============*/
+const stats = document.querySelector('.stats')
 
-sr.reveal(`.home__content, .services__data, .services__swiper, .footer__container`)
-sr.reveal(`.home__images`, {origin: 'bottom', delay: 300})
-sr.reveal(`.about__images, .contact__img`, {origin: 'left'})
-sr.reveal(`.about__data, .contact__data`, {origin: 'right'})
-sr.reveal(`.projects__card`, {interval: 60})
-sr.reveal(`.video-card`, {interval: 80})
+if(stats){
+   const track = stats.querySelector('.stats__track')
+   const group = stats.querySelector('.stats__group')
+   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+   /* Fix widths so counting and changing names don't shift the strip */
+   group.querySelectorAll('.stats__number').forEach(el =>{
+      el.style.minWidth = el.offsetWidth + 'px'
+   })
+
+   const service = group.querySelector('.stats__service')
+   const serviceNames = service ? service.dataset.services.split(',') : []
+   if(service){
+      let maxWidth = 0
+      serviceNames.forEach(name =>{
+         service.textContent = name
+         maxWidth = Math.max(maxWidth, service.offsetWidth)
+      })
+      service.textContent = serviceNames[0]
+      service.style.width = maxWidth + 'px'
+   }
+
+   /* Rotate service names every 2 seconds */
+   if(serviceNames.length > 1){
+      let serviceIndex = 0
+      setInterval(() =>{
+         serviceIndex = (serviceIndex + 1) % serviceNames.length
+         stats.querySelectorAll('.stats__service').forEach(el =>{
+            el.classList.add('is-changing')
+            setTimeout(() =>{
+               el.textContent = serviceNames[serviceIndex]
+               el.classList.remove('is-changing')
+            }, 300)
+         })
+      }, 2000)
+   }
+
+   if(!reduceMotion){
+      /* Moving strip: fill each half of the track wider than the screen */
+      const buildMarquee = () =>{
+         track.querySelectorAll('.stats__group[aria-hidden]').forEach(clone => clone.remove())
+         stats.classList.add('stats--marquee')
+
+         const groupWidth = group.offsetWidth
+         const copiesPerHalf = Math.max(1, Math.ceil(window.innerWidth / groupWidth))
+
+         for(let i = 1; i < copiesPerHalf * 2; i++){
+            const clone = group.cloneNode(true)
+            clone.setAttribute('aria-hidden', 'true')
+            track.appendChild(clone)
+         }
+
+         const pixelsPerSecond = 50
+         stats.style.setProperty('--stats-duration', (groupWidth * copiesPerHalf / pixelsPerSecond) + 's')
+      }
+
+      buildMarquee()
+
+      let lastWidth = window.innerWidth
+      let resizeTimer
+      window.addEventListener('resize', () =>{
+         clearTimeout(resizeTimer)
+         resizeTimer = setTimeout(() =>{
+            if(window.innerWidth > lastWidth) buildMarquee()
+            lastWidth = window.innerWidth
+         }, 200)
+      })
+
+      /* Count numbers up slowly when the strip comes into view */
+      if('IntersectionObserver' in window){
+         const countUp = (el) =>{
+            const target = +el.dataset.target
+            const suffix = el.dataset.suffix || ''
+            const duration = 3500
+            const start = performance.now()
+
+            const step = (now) =>{
+               const progress = Math.min((now - start) / duration, 1)
+               const eased = 1 - Math.pow(1 - progress, 3)
+               el.textContent = Math.round(target * eased) + suffix
+               if(progress < 1) requestAnimationFrame(step)
+            }
+            requestAnimationFrame(step)
+         }
+
+         stats.querySelectorAll('.stats__number').forEach(el =>{
+            el.textContent = '0' + (el.dataset.suffix || '')
+         })
+
+         const statsObserver = new IntersectionObserver((entries, observer) =>{
+            if(entries[0].isIntersecting){
+               stats.querySelectorAll('.stats__number').forEach(countUp)
+               observer.disconnect()
+            }
+         }, {threshold: 0.3})
+
+         statsObserver.observe(stats)
+      }
+   }
+}
+
+/*=============== SCROLL REVEAL ANIMATION ===============*/
+if(typeof ScrollReveal !== 'undefined'){
+   const sr = ScrollReveal({
+      origin: 'top',
+      distance: '20px',
+      duration: 300,
+      delay: 0,
+      viewFactor: 0.05,
+      reset: false,
+   })
+
+   sr.reveal(`.home__content, .services__data, .services__swiper, .footer__container`)
+   sr.reveal(`.home__images`, {origin: 'bottom', delay: 80})
+   sr.reveal(`.about__images, .contact__img`, {origin: 'left'})
+   sr.reveal(`.about__data, .contact__data`, {origin: 'right'})
+   sr.reveal(`.projects__card`, {interval: 30})
+   sr.reveal(`.video-card`, {interval: 30})
+}

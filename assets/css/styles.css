@@ -364,6 +364,99 @@ img {
   color: var(--white-color);
 }
 
+/*=============== STATS ===============*/
+.stats {
+  background: var(--first-gradient);
+  padding-block: .85rem;
+  overflow: hidden;
+}
+
+.stats__track {
+  display: flex;
+  justify-content: center;
+}
+
+.stats__group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats__item {
+  display: flex;
+  align-items: center;
+  column-gap: .6rem;
+  padding: .25rem 1.25rem;
+  white-space: nowrap;
+}
+
+.stats__item::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-left: 1.9rem;
+  background-color: hsl(0, 0%, 100%, .5);
+  transform: rotate(45deg);
+}
+
+.stats__number,
+.stats__service {
+  color: var(--white-color);
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-bold);
+  line-height: 1;
+}
+
+.stats__number {
+  font-variant-numeric: tabular-nums;
+}
+
+.stats__service {
+  display: inline-block;
+  transition: opacity .3s, transform .3s;
+}
+
+.stats__service.is-changing {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.stats__label {
+  color: hsl(0, 0%, 100%, .85);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+/* Moving strip, enabled from JS */
+.stats--marquee .stats__track {
+  justify-content: flex-start;
+  width: max-content;
+  animation: stats-marquee var(--stats-duration, 40s) linear infinite;
+}
+
+.stats--marquee .stats__group {
+  flex-wrap: nowrap;
+}
+
+.stats--marquee:hover .stats__track {
+  animation-play-state: paused;
+}
+
+/* Left to right: start shifted by half the track, end at 0 */
+@keyframes stats-marquee {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@media screen and (min-width: 1150px) {
+  .stats {
+    padding-block: 1rem;
+  }
+}
+
 .home__images {
   position: absolute;
   top: 0;
