@@ -117,6 +117,15 @@ img {
   margin-bottom: 1.5rem;
 }
 
+.section__title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: .75rem auto 0;
+  background: var(--first-gradient);
+}
+
 .section__subtitle {
   display: block;
   font-size: var(--normal-font-size);
@@ -420,6 +429,31 @@ img {
 
 .home__data {
   text-align: center;
+}
+
+.home__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-bottom: 1.25rem;
+  padding: .4rem .9rem;
+  border: 1px solid hsla(0, 0%, 100%, .25);
+  background-color: hsla(0, 0%, 100%, .08);
+  color: var(--white-color);
+  font-size: .75rem;
+  font-weight: var(--font-semi-bold);
+  letter-spacing: .03em;
+}
+
+.home__badge i {
+  color: hsl(1, 80%, 62%);
+  font-size: 1rem;
+}
+
+.home__cta {
+  padding: 1.1rem 2.25rem;
+  font-size: var(--normal-font-size);
+  box-shadow: 0 8px 24px hsla(1, 66%, 36%, .35);
 }
 
 .home__title {
@@ -773,7 +807,7 @@ img {
   cursor: pointer;
   padding: 2rem 1rem 3.5rem;
   overflow: hidden;
-  transition: border-color .4s, box-shadow .4s;
+  transition: border-color .4s, box-shadow .4s, transform .4s;
 }
 
 .services__card::before {
@@ -787,6 +821,7 @@ img {
 }
 
 .services__card:hover {
+  transform: translateY(-4px);
   border-color: var(--first-color);
   box-shadow: 0 10px 28px hsla(1, 66%, 36%, .15);
 }
@@ -879,6 +914,7 @@ img {
   border: 1px solid var(--first-color);
   background-clip: content-box;
   box-shadow: 0 6px 20px hsla(255, 20%, 10%, .12);
+  overflow: hidden;
   transition: border-width .4s, box-shadow .4s;
 }
 
@@ -891,6 +927,11 @@ img {
   width: 100%;
   height: 190px;
   object-fit: cover;
+  transition: transform .6s;
+}
+
+.projects__card:hover .projects__img {
+  transform: scale(1.06);
 }
 
 .projects__data {
@@ -1315,6 +1356,96 @@ img {
 
 .contact-float i {
   font-size: 1.1rem;
+}
+
+/*=============== PROMISE ===============*/
+.promise__container {
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  padding-top: 1rem;
+}
+
+.promise__card {
+  position: relative;
+  background-color: var(--container-color);
+  border: 1px solid var(--gray-border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform .4s, box-shadow .4s, border-color .4s;
+}
+
+.promise__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--first-gradient);
+}
+
+.promise__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--first-color);
+  box-shadow: 0 10px 28px hsla(1, 66%, 36%, .15);
+}
+
+.promise__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background-color: hsla(1, 66%, 36%, .1);
+  color: var(--first-color);
+  font-size: 1.6rem;
+}
+
+.promise__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: .5rem;
+}
+
+.promise__description {
+  font-size: var(--small-font-size);
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 540px) {
+  .promise__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .promise__container {
+    grid-template-columns: repeat(4, 1fr);
+    margin-inline: auto;
+  }
+}
+
+/*=============== WHATSAPP FLOAT ===============*/
+.whatsapp-float {
+  position: fixed;
+  left: 1rem;
+  bottom: 1.25rem;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: hsl(142, 70%, 41%);
+  color: var(--white-color);
+  font-size: 1.6rem;
+  box-shadow: 0 4px 16px hsla(142, 70%, 20%, .35);
+  z-index: var(--z-tooltip);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px hsla(142, 70%, 20%, .45);
 }
 
 .contact-float:hover {
@@ -2079,6 +2210,12 @@ img {
 
   .contact :is(.section__title, .section__subtitle) {
     text-align: initial;
+  }
+
+  .about__data .section__title::after,
+  .services__data .section__title::after,
+  .contact .section__title::after {
+    margin-left: 0;
   }
   .contact__container {
     grid-template-columns: 530px 515px;
