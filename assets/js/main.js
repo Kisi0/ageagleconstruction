@@ -34,6 +34,16 @@ if(navClose){
    })
 }
 
+/* Tap outside the open menu to close it */
+document.addEventListener('click', (e) =>{
+   if(navMenu && navMenu.classList.contains('show-menu')
+      && !navMenu.contains(e.target) && !(navToggle && navToggle.contains(e.target))){
+      e.preventDefault()
+      e.stopPropagation()
+      navMenu.classList.remove('show-menu')
+   }
+}, true)
+
 /*=============== REMOVE MENU MOBILE ===============*/
 const navLink = document.querySelectorAll('.nav__link:not(.nav__dropdown-toggle), .nav__dropdown-link')
 

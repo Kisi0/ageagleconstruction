@@ -185,11 +185,15 @@ img {
     top: 0;
     right: -100%;
     background-color: var(--black-color);
-    width: 80%;
+    width: 42%;
     height: 100%;
-    padding: 7.5rem 3.5rem 0;
+    padding: 5.5rem 1rem 2rem;
     border-left: 2px solid var(--black-border);
-    transition: right .4s;
+    transition: right .4s, box-shadow .4s;
+  }
+
+  .nav__menu .nav__dropdown-menu {
+    min-width: 0;
   }
 }
 .nav__list {
@@ -303,6 +307,97 @@ img {
 /* Active link */
 .active-link {
   color: var(--first-color);
+}
+
+/* Mobile menu */
+@media screen and (max-width: 1150px) {
+  .nav__menu {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  /* Darken the page behind the open menu */
+  .nav__menu.show-menu {
+    box-shadow: -8px 0 24px hsla(218, 45%, 5%, .35),
+                0 0 0 100vmax hsla(218, 45%, 8%, .55);
+  }
+
+  .nav__close {
+    top: 1.4rem;
+    right: 1rem;
+    color: var(--white-color);
+  }
+
+  .nav__menu-logo {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .nav__menu-logo img {
+    width: 44px;
+  }
+
+  .nav__menu .nav__list {
+    row-gap: 0;
+  }
+
+  .nav__menu .nav__list > li {
+    border-bottom: 1px solid hsla(0, 0%, 100%, .08);
+  }
+
+  .nav__menu .nav__list > li:last-child {
+    border-bottom: none;
+    margin-top: 1.5rem;
+  }
+
+  .nav__menu .nav__link {
+    display: block;
+    padding: .9rem .75rem;
+  }
+
+  .nav__menu .active-link {
+    background-color: hsla(0, 0%, 100%, .04);
+    box-shadow: inset 3px 0 0 var(--first-color);
+  }
+
+  .nav__menu .button {
+    justify-content: center;
+    width: 100%;
+    padding: .7rem .5rem;
+    font-size: var(--small-font-size);
+  }
+
+  .nav__menu .nav__dropdown-menu {
+    border-top: none;
+    padding: 0 0 .5rem;
+  }
+
+  .nav__menu .nav__dropdown-link {
+    padding: .55rem .75rem;
+  }
+
+  .nav__phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .35rem;
+    margin-top: 1rem;
+    color: var(--text-color-light);
+    font-size: .75rem;
+    font-weight: var(--font-semi-bold);
+    white-space: nowrap;
+  }
+
+  .nav__phone + .nav__phone {
+    margin-top: .6rem;
+  }
+
+  .nav__phone i {
+    color: var(--first-color);
+    font-size: 1rem;
+  }
 }
 
 /*=============== HOME ===============*/
@@ -1854,8 +1949,10 @@ img {
   .nav {
     height: calc(var(--header-height) + 2rem);
   }
-  .nav__toggle, 
-  .nav__close {
+  .nav__toggle,
+  .nav__close,
+  .nav__menu-logo,
+  .nav__phone {
     display: none;
   }
   .nav__menu {
